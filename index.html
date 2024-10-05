@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Personal Portfolio</title>
+    <script src="main.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-bg: #2C2B30; 
+            --secondary-bg: #4F4F51; 
+            --text-color: #d6d6d6; 
+            --highlight-color: #F2C4CE; 
+            --accent-color: #f57cef; 
+            --link-color: #f867d6; 
+            --hover-color: #f337ea; 
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-color);
+            transition: background-color 0.5s ease;
+        }
+
+        .navbar {
+            background: linear-gradient(40deg, var(--primary-bg), var(--secondary-bg));
+            padding: 1rem 0;
+            transition: background 0.5s ease;
+        }
+
+        .navbar:hover {
+            background: linear-gradient(45deg, var(--secondary-bg), var(--primary-bg));
+        }
+
+        .navbar-brand, .nav-link {
+            color: var(--link-color) !important;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--hover-color) !important;
+        }
+
+        .hero {
+            background: linear-gradient(45deg, var(--primary-bg), var(--secondary-bg), var(--accent-color), var(--highlight-color));
+            background-size: 300% 300%;
+            color: white;
+            padding: 150px 0;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            animation: gradientShift 10s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .animated-text {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid #fff;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #fff; }
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+            text-align: center;
+            color: var(--highlight-color);
+            transition: color 0.3s ease;
+        }
+
+        .section-title:hover {
+            color: var(--accent-color);
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s ease;
+            height: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            background-color: var(--secondary-bg);
+        }
+
+        .skill-progress {
+            height: 10px;
+            background-color: var(--primary-bg);
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .skill-progress-bar {
+            height: 100%;
+            background: linear-gradient(to right, var(--accent-color), var(--highlight-color));
+            transition: width 1s ease-in-out, background 0.5s ease;
+        }
+
+        .skill-progress:hover .skill-progress-bar {
+            background: linear-gradient(to right, var(--highlight-color), var(--accent-color));
+        }
+
+        .contact-form {
+            background-color: var(--secondary-bg);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-form:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-form input, .contact-form textarea {
+            border: none;
+            border-bottom: 2px solid var(--highlight-color);
+            border-radius: 0;
+            padding: 10px 0;
+            margin-bottom: 20px;
+            background-color: transparent;
+            color: var(--text-color);
+            transition: border-color 0.3s ease-in-out, background-color 0.3s ease;
+        }
+
+        .contact-form input:focus, .contact-form textarea:focus {
+            box-shadow: none;
+            border-color: var(--accent-color);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--accent-color), var(--highlight-color));
+            border: none;
+            border-radius: 25px;
+            padding: 10px 30px;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(45deg, var(--highlight-color), var(--accent-color));
+        }
+
+        footer {
+            background: linear-gradient(45deg, var(--primary-bg), var(--secondary-bg));
+            color: white;
+            padding: 30px 0;
+            transition: background 0.5s ease;
+        }
+
+        footer:hover {
+            background: linear-gradient(45deg, var(--secondary-bg), var(--primary-bg));
+        }
+
+        .social-icons a {
+            color: var(--text-color);
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: transform 0.3s ease-in-out, color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.2);
+            color: var(--accent-color);
+        }
+
+        #about, #projects, #skills, #contact {
+            background: linear-gradient(45deg, var(--primary-bg), var(--secondary-bg));
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 100%);
+            transition: top 0.3s ease;
+        }
+
+        .card:hover::before {
+            top: 0;
+        }
+
+        .about-image {
+            border-radius: 50%;
+            border: 5px solid var(--highlight-color);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .about-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px var(--accent-color);
+        }
+
+        .project-image {
+            height: 200px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Mritulashankar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header id="home" class="hero">
+        <div class="container text-center">
+            <h1 class="animated-text">Welcome to My Portfolio</h1>
+            <p class="lead">Web Developer | Designer | Creative Thinker</p>
+            <a href="#contact" class="btn btn-light btn-lg mt-3">Get In Touch</a>
+        </div>
+    </header>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-4">
+                    <img src="OIG2.jpg" alt="Your Name" class="img-fluid about-image">
+                </div>
+                <div class="col-md-6">
+                    <p class="lead">Hello! I'm a passionate web developer with a keen eye for design and a love for creating interactive, user-friendly websites. With expertise in HTML, CSS, JavaScript, and various frameworks, I strive to bring ideas to life through code.</p>
+                    <p>I've worked on numerous projects, constantly learning and adapting to new technologies. I believe in clean, efficient code and creating seamless user experiences.</p>
+                    <a href="#" class="btn btn-primary mt-3">Download Resume</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title">My Skills</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <h4>HTML5</h4>
+                    <div class="skill-progress">
+                        <div class="skill-progress-bar" style="width: 90%;" data-width="90%"></div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <h4>CSS3</h4>
+                    <div class="skill-progress">
+                        <div class="skill-progress-bar" style="width: 85%;" data-width="85%"></div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <h4>JavaScript</h4>
+                    <div class="skill-progress">
+                        <div class="skill-progress-bar" style="width: 80%;" data-width="80%"></div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <h4>Node.js</h4>
+                    <div class="skill-progress">
+                        <div class="skill-progress-bar" style="width: 75%;" data-width="75%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+            <div class="row">
+                <div class="col-md-6 mb-6">
+                    <div class="card">
+                        <img src="OIG1.jpg" class="card-img-top project-image" alt="Project 1">
+                        <div class="card-body">
+                            <h5 class="card-title">CHAT APPLICATION</h5>
+                            <p class="card-text">i have created a chat application using python and I have used a ceaser cypher algorithm.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-6">
+                    <div class="card">
+                        <img src="th.jpg" class="card-img-top project-image" alt="Project 2">
+                        <div class="card-body">
+                            <h5 class="card-title">WEATHER FORCASTING</h5>
+                            <p class="card-text">i have created a web page for weather forcasting</p>
+                        </div>
+                    </div>
+                </div>
+    <section id="contact" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Contact Me</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="name" required placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="email"required placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" id="message" rows="5"required placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <h4>Let's Connect</h4>
+                    <p class="lead">Feel free to reach out to me for any collaboration or queries. I'll try my best to respond as soon as possible.</p>
+                    <p><strong>Email:</strong> mritulashankar@gmail.com</p>
+                    <div class="social-icons">
+                        <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://linkedin.com/in/yourusername" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://twitter.com/yourusername" target="_blank"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="text-center">
+        <div class="container">
+            <p>&copy; 2024 Mritulashankar. All Rights Reserved.</p>
+        </div>
+    </footer>
